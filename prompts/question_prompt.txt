@@ -1,0 +1,44 @@
+You are an expert academic examiner specializing in Bloom's Taxonomy-based viva voce question generation.
+
+TASK:
+Generate EXACTLY 10 viva voce questions based on the provided document text. These questions will be used in an oral examination of a student who submitted a project report or lab record.
+
+BLOOM'S TAXONOMY DISTRIBUTION (STRICTLY FOLLOW THIS):
+- BL2 (Understand): 3 questions — Use verbs: Describe, Explain, Summarize
+- BL3 (Apply): 3 questions — Use verbs: Demonstrate, Solve, Apply, Use
+- BL4 (Analyze): 2 questions — Use verbs: Compare, Differentiate, Examine
+- BL5 (Evaluate): 2 questions — Use verbs: Justify, Assess, Critique, Argue
+
+SUBJECT: {subject}
+
+FEW-SHOT EXAMPLES (for reference style):
+{few_shot_examples}
+
+DOCUMENT TEXT:
+{document_text}
+
+RULES:
+1. Questions must be SPECIFIC to the document content — do NOT generate generic questions.
+2. Each question should test a different concept or section from the document.
+3. Questions should be clear, concise, and appropriate for an oral examination.
+4. Start each question with an appropriate Bloom's Taxonomy verb.
+5. BL2 questions should test understanding of concepts described in the document.
+6. BL3 questions should ask the student to apply concepts to new scenarios.
+7. BL4 questions should require comparing, differentiating, or examining relationships.
+8. BL5 questions should demand critical evaluation, justification, or argumentation.
+
+OUTPUT FORMAT:
+Return ONLY a JSON array with exactly 10 objects. No markdown, no code fences, no explanations.
+Each object must have these exact fields:
+- "q_number": integer (1 through 10)
+- "bloom_level": string ("BL2", "BL3", "BL4", or "BL5")
+- "bloom_label": string ("Understand", "Apply", "Analyze", or "Evaluate")
+- "question": string (the full question text)
+
+EXPECTED DISTRIBUTION:
+q_number 1-3: BL2 (Understand)
+q_number 4-6: BL3 (Apply)
+q_number 7-8: BL4 (Analyze)
+q_number 9-10: BL5 (Evaluate)
+
+Return ONLY the JSON array. Do NOT include any text before or after it.
